@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <!--MILK CLASS-->
+    <class name="eu.paulcosareanu.project.Milk" table="milk">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="brand" type="string">
+      <column name="brand"/>
+    </property>
+    <property name="type" type="string">
+      <column name="type"/>
+    </property>
+  </class>
+  <!--CHEESES CLASS-->
+  <class name="eu.paulcosareanu.project.Cheeses" table="cheeses">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="type" type="string">
+      <column name="type"/>
+    </property>
+    <property name="brand" type="string">
+      <column name="brand"/>
+    </property>
+  </class>
+  <!--cheesesComparison-->
+  <class name="eu.paulcosareanu.project.CheesesComparison" table="cheeses_comparison">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="weight" type="string">
+      <column name="weight"/>
+    </property>
+    <property name="url" type="string">
+      <column name="url"/>
+    </property>
+    <property name="price" type="float">
+      <column name="price"/>
+    </property>
+    <property name="retailer" type="string">
+      <column name="retailer"/>
+    </property>
+    <property name="cheeseId" type="int">
+      <column name="cheese_id"/>
+    </property>
+    <property name="imageUrl" type="string">
+      <column name="imageUrl"/>
+    </property>
+    <property name="searchString" type="string">
+      <column name="searchString"/>
+    </property>
+  </class>
+  <!--milkComparison-->
+  <class name="eu.paulcosareanu.project.MilkComparison" table="milk_comparison">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="volume" type="string">
+      <column name="volume"/>
+    </property>
+    <property name="url" type="string">
+      <column name="url"/>
+    </property>
+    <property name="price" type="float">
+      <column name="price"/>
+    </property>
+    <property name="retailer" type="string">
+      <column name="retailer"/>
+    </property>
+    <property name="milkId" type="int">
+      <column name="milk_id"/>
+    </property>
+    <property name="imageUrl" type="string">
+      <column name="imageUrl"/>
+    </property>
+    <property name="searchString" type="string">
+      <column name="searchString"/>
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <!--MILK CLASS-->
+    <class name="eu.paulcosareanu.project.Milk" table="milk">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="productUrl" type="String">
+      <column name="product_url"/>
+    </property>
+    <property name="productName" type="String">
+      <column name="name"/>
+    </property>
+  </class>
+  <!--CHEESES CLASS-->
+  <class name="eu.paulcosareanu.project.Cheeses" table="cheeses">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="productUrl" type="String">
+      <column name="product_url"/>
+    </property>
+    <property name="productName" type="String">
+      <column name="name"/>
+    </property>
+  </class>
+  <!--TAGS CLASS--> 
+  <class name="eu.paulcosareanu.project.Tags" table="tags">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="tag" type="int">
+      <column name="tag"/>
+    </property>
+  </class>
+  <!--sellers CLASS--> 
+  <class name="eu.paulcosareanu.project.Sellers" table="sellers">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="sellerName" type="String">
+      <column name="seller_name"/>
+    </property>
+  </class>
+  <!--prices CLASS--> 
+  <class name="eu.paulcosareanu.project.Peices" table="prices">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="value" type="float">
+      <column name="value"/>
+    </property>
+  </class>
+  <!--cheeses tags-->
+  <class name="eu.paulcosareanu.project.CheesesTags" table="cheeses/tags">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="cheeseIdFk" type="int">
+      <column name="cheese_id_fk"/>
+    </property>
+    <property name="tagIdFk" type="int">
+        <column name="tag_id_fk"/>
+    </property>
+  </class>
+  <!--milk tags-->
+  <class name="eu.paulcosareanu.project.MilkTags" table="milk/tags">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="milkIdFk" type="int">
+      <column name="milk_id_fk"/>
+    </property>
+    <property name="tagIdFk" type="int">
+      <column name="tag_id_fk"/>
+    </property>
+  </class>
+  <!--cheeses prices-->
+  <class name="eu.paulcosareanu.project.PricesCheeses" table="prices/cheeses">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="priceIdFk" type="int">
+      <column name="price_id_fk"/>
+    </property>
+    <property name="cheeseIdFk" type="int">
+      <column name="cheese_id_fk"/>
+    </property>
+  </class>
+  <!--milk prices-->
+  <class name="eu.paulcosareanu.project.MilkPrices" table="milk/prices">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="priceIdFk" type="int">
+      <column name="price_id_fk"/>
+    </property>
+    <property name="milkIdFk" type="int">
+      <column name="milk_id_fk"/>
+    </property>
+  </class>
+  <!--cheeses sellers-->
+  <class name="eu.paulcosareanu.project.SellersCheeses" table="sellers/cheeses">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="sellerIdFk" type="int">
+      <column name="seller_id_fk"/>
+    </property>
+    <property name="cheeseIdFk" type="int">
+      <column name="cheese_id_fk"/>
+    </property>
+  </class>
+  <!--milk sellers-->
+  <class name="eu.paulcosareanu.project.MilkSellers" table="prices">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="sellerIdFk" type="int">
+      <column name="seller_id_fk"/>
+    </property>
+    <property name="milkIdFk" type="int">
+      <column name="milk_id_fk"/>
+    </property>
+  </class>
+</hibernate-mapping>

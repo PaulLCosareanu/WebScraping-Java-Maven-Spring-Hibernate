@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id = "tescoScrape" class = "eu.paulcosareanu.project.ScraperCrawler">
+        <property name = "xpathName" value = "//li[@class='product-list--list-item' or @class='product-list--list-item first']/child::div/child::div/child::div/child::div//child::div[@class='product-details--wrapper']/child::div/child::h3[@class='ui__StyledTitle-sc-18aswmp-1 jiUBPO']"/>
+        <property name = "xpathLink" value = "//li[@class='product-list--list-item' or @class='product-list--list-item first']/child::div/child::div/child::div/child::div//child::div[@class='product-details--wrapper']/child::div/child::h3[@class='ui__StyledTitle-sc-18aswmp-1 jiUBPO']/child::a"/>
+        <property name = "xpathPrice" value= "//li[@class='product-list--list-item' or @class='product-list--list-item first']/child::div/child::div/child::div/child::div//child::div[@class='price-details--wrapper']/child::div/child::div/child::div"/>
+        <property name = "xpathImageUrl" value = "//li[@class='product-list--list-item' or @class='product-list--list-item first']/child::div/child::div/child::div/child::div/child::a/child::div[@class='product-image__container']/child::img[@class='product-image']"/>
+        <property name = "xpathPagination" value= "//span[@class='icon-icon_whitechevronright']/ancestor::a[@href]"/>
+        <property name="XpathBrand" value="//*[@id='filter-brands']/div/ul/li/ul/li/div/label/a/span[4]"/>
+        <property name="categoryButton" value="//button[@class='button-text filter-select' and @aria-controls='filter-brands']"/>
+        <property name="volumeXpath" value="//button[@class='button-text filter-select' and @aria-controls='filter-brands']"/>
+        <property name="Links">
+           <list>
+           <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Semi-Skimmed%20Milk&amp;viewAll=shelf</value><!--SemiSkimmed-->
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Skimmed%20Milk&amp;viewAll=shelf</value><!--skimmed-->
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Whole%20Milk&amp;viewAll=shelf</value><!--whole-->
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Organic%20Milk&amp;viewAll=shelf</value><!--organic-->
+               <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Mozzarella</value>
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Stilton%20%26%20Blue%20Cheese</value>
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cottage%20Cheese%20%26%20Soft%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Cottage%20Cheese</value>
+            <!--<value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cheddar%20Cheese&amp;viewAll=aisle</value>-->
+            <!--// "",//cottage and soft cheese-->
+           </list>   
+        </property>
+        <property name="seller" value="Tesco"/>
+    </bean>
+    <bean id = "AmazonScrape" class = "eu.paulcosareanu.project.ScraperCrawler">
+        <property name = "xpathName" value = "//a[@class='a-link-normal a-text-normal']/child::span[@class='a-size-base-plus a-color-base a-text-normal']"/>
+        <property name = "xpathLink" value = "//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-4']/child::a[@class='a-link-normal a-text-normal']"/>
+        <property name = "xpathPrice" value= "//span[@class='a-price' and @class!='a-text-price']/child::span[@class='a-offscreen']"/>
+        <property name = "xpathImageUrl" value = "//div[@class='a-section aok-relative s-image-square-aspect']/child::img"/>
+        <property name = "xpathPagination" value= "//ul[@class='a-pagination']/child::li[@class='a-last']"/>
+        <property name="xpathBrand" value="//*[@id='filter-brands']/div/ul/li/ul/li/div/label/a/span[@class='filter-label--line--inline']"/>
+        <property name="categoryButton" value="//button[@class='button-text filter-select' and @aria-controls='filter-brands']"/>
+        <property name="volumeXpath" value=""/>
+        <property name="Links">
+           <list>
+            <value>https://www.amazon.co.uk/s?bbn=6723205031&amp;rh=n%3A21887939031&amp;s=featured-rank&amp;pd_rd_r=368afd6e-3595-4632-8f23-4a350fe320cf&amp;pd_rd_w=tBlEe&amp;pd_rd_wg=FlJqX&amp;pf_rd_p=65a16e03-0adc-418f-b448-084a79ccb667&amp;pf_rd_r=58V6VA1NF48M3RW0JC8Q&amp;ref=fs_dsk_cp_ai_sml_1_359985031</value><!--SemiSkimmed-->
+            <value>https://www.amazon.co.uk/s?bbn=6723205031&amp;rh=n%3A21887940031&amp;s=featured-rank&amp;pd_rd_r=5346c8ce-0c74-451b-a986-60baf927c465&amp;pd_rd_w=lfctb&amp;pd_rd_wg=PBjPI&amp;pf_rd_p=44ab9dc1-7acf-442d-94a5-6c799d2baf74&amp;pf_rd_r=B6T58DFVX5CNN08Q56ZJ&amp;ref=fs_dsk_cp_ai_sml_4_359985031</value><!--skimmed-->
+            <value>https://www.amazon.co.uk/s?bbn=6723205031&amp;rh=n%3A21887938031&amp;s=featured-rank&amp;pd_rd_r=5346c8ce-0c74-451b-a986-60baf927c465&amp;pd_rd_w=40kKj&amp;pd_rd_wg=PBjPI&amp;pf_rd_p=10523737-52bb-4287-b293-5cbf53a88d0f&amp;pf_rd_r=B6T58DFVX5CNN08Q56ZJ&amp;ref=fs_dsk_cp_ai_sml_2_359985031</value><!--whole-->
+            <value>https://www.amazon.co.uk/s?bbn=6723205031&amp;rh=n%3A21887941031&amp;s=featured-rank&amp;pd_rd_r=5346c8ce-0c74-451b-a986-60baf927c465&amp;pd_rd_w=egcxi&amp;pd_rd_wg=PBjPI&amp;pf_rd_p=10523737-52bb-4287-b293-5cbf53a88d0f&amp;pf_rd_r=B6T58DFVX5CNN08Q56ZJ&amp;ref=fs_dsk_cp_ai_sml_5_359985031</value><!--organic-->
+<!--            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cheddar%20Cheese&amp;viewAll=aisle</value>,//cheddar cheese
+            // "",//cottage and soft cheese
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Mozzarella</value>,//mozzarella
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Stilton%20%26%20Blue%20Cheese</value>,//blue cheese
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cottage%20Cheese%20%26%20Soft%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Cottage%20Cheese</value>//cottage cheese-->
+           </list>   
+        </property>
+        <property name="seller" value="Amazon"/>
+    </bean>
+<bean id = "AsdaScrape" class = "eu.paulcosareanu.project.ScraperCrawler">
+        <property name = "xpathName" value = "//div[contains(@class,' co-product-list')and not(contains(@data-type,'personalized-recommendation'))and not(contains(@data-type,'hooklogic'))]//child::a[@class='co-product__anchor']"/>
+        <property name = "xpathLink" value = "//div[contains(@class,' co-product-list')and not(contains(@data-type,'personalized-recommendation'))and not(contains(@data-type,'hooklogic'))]//child::a[@class='co-product__anchor']"/>
+        <property name = "xpathPrice" value= "//div[contains(@class,' co-product-list')and not(contains(@data-type,'personalized-recommendation'))and not(contains(@data-type,'hooklogic'))]//child::strong[@class='co-product__price']"/>
+        <property name = "xpathImageUrl" value = "//div[contains(@class,' co-product-list')and not(contains(@data-type,'personalized-recommendation'))and not(contains(@data-type,'hooklogic'))]//child::img[@class='co-product__image co-item__image']"/>
+        <property name = "xpathPagination" value= ""/>
+        <property name="XpathBrand" value="//div[@class='co-dropdown facet-select facet-dropdown']/child::select/child::option"/>
+        <property name="categoryButton" value="//div[@class='co-dropdown facet-select facet-dropdown']"/>
+        <property name="volumeXpath" value="//div[contains(@class,' co-product-list')and not(contains(@data-type,'personalized-recommendation'))and not(contains(@data-type,'hooklogic'))]//child::span[@class='co-product__volume']"/>
+        <property name="Links">
+           <list>
+            <value>https://groceries.asda.com/aisle/chilled-food/milk-butter-cream-eggs/fresh-milk/111623</value><!--SemiSkimmed-->
+            <value>https://groceries.asda.com/shelf/chilled-food/cheese/soft-cottage-cheese/cottage-cheese-quark/111693</value>
+            <value>https://groceries.asda.com/shelf/chilled-food/cheese/speciality-continental/mozzarella-mascarpone/111704</value>
+            <value>https://groceries.asda.com/shelf/chilled-food/cheese/speciality-continental/blue-stilton/111702</value>
+            <!--<value>https://groceries.asda.com/aisle/chilled-food/milk-butter-cream-eggs/long-life-milk/111629</value>skimmed-->
+            <!--<value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Whole%20Milk&amp;viewAll=shelf</value>whole-->
+            <!--<value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Organic%20Milk&amp;viewAll=shelf</value>organic-->
+<!--            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cheddar%20Cheese&amp;viewAll=aisle</value>,//cheddar cheese
+            // "",//cottage and soft cheese
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Mozzarella</value>,//mozzarella
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Stilton%20%26%20Blue%20Cheese</value>,//blue cheese
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cottage%20Cheese%20%26%20Soft%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Cottage%20Cheese</value>//cottage cheese-->
+           </list>   
+        </property>
+        <property name="seller" value="Asda"/>
+    </bean>
+<bean id = "SainsburyScrape" class = "eu.paulcosareanu.project.ScraperCrawler">
+        <property name = "xpathName" value = "//div[@class='productNameAndPromotions']//child::h3"/>
+        <property name = "xpathLink" value = "//div[@class='productNameAndPromotions']//child::a"/>
+        <property name = "xpathPrice" value= "//div[@class='pricingAndTrolleyOptions']//child::p[@class='pricePerUnit']"/>
+        <property name = "xpathImageUrl" value = "//div[@class='productNameAndPromotions']//child::img"/>
+        <property name = "xpathPagination" value= ""/>
+        <property name="XpathBrand" value="//div[@class='field topBrands']//child::label"/>
+        <property name="categoryButton" value="//a[@id='showHideFilterSlither']"/>
+        <property name="volumeXpath" value="//div[@class='productNameAndPromotions']//child::h3"/>
+        <property name="Links">
+           <list>
+            <value>https://www.sainsburys.co.uk/shop/gb/groceries/dairy-eggs-and-chilled/milk-fresh-milk?fromMegaNav=1#langId=44&amp;storeId=10151&amp;catalogId=10241&amp;categoryId=428869&amp;parent_category_rn=428866&amp;top_category=428866&amp;pageSize=60&amp;orderBy=FAVOURITES_ONLY%7CSEQUENCING%7CTOP_SELLERS&amp;searchTerm=&amp;beginIndex=0&amp;hideFilters=true</value><!--SemiSkimmed-->
+            <value>https://www.sainsburys.co.uk/shop/gb/groceries/dairy-eggs-and-chilled/soft-and-cottage-cheeses?fromMegaNav=1</value>
+            <value>https://www.sainsburys.co.uk/shop/gb/groceries/dairy-eggs-and-chilled/speciality-and-continental-cheeses?fromMegaNav=1</value>
+            <!--<value>https://groceries.asda.com/shelf/chilled-food/cheese/speciality-continental/blue-stilton/111702</value>-->
+            <!--<value>https://groceries.asda.com/aisle/chilled-food/milk-butter-cream-eggs/long-life-milk/111629</value>skimmed-->
+            <!--<value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Whole%20Milk&amp;viewAll=shelf</value>whole-->
+            <!--<value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/milk-butter-and-eggs/milk?count=48&amp;shelf=Organic%20Milk&amp;viewAll=shelf</value>organic-->
+<!--            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cheddar%20Cheese&amp;viewAll=aisle</value>,//cheddar cheese
+            // "",//cottage and soft cheese
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Mozzarella</value>,//mozzarella
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Speciality%20%26%20Continental%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Stilton%20%26%20Blue%20Cheese</value>,//blue cheese
+            <value>https://www.tesco.com/groceries/en-GB/shop/fresh-food/cheese/all?aisle=Cottage%20Cheese%20%26%20Soft%20Cheese&amp;viewAll=aisle%2Cshelf&amp;shelf=Cottage%20Cheese</value>//cottage cheese-->
+           </list>   
+        </property>
+        <property name="seller" value="Sainsbury"/>
+    </bean>
+    <bean id = "Sainsbury" class = "eu.paulcosareanu.project.website">
+        <property name = "scraper" value = "SainsburyScrape"/>
+    </bean>
+    <bean id = "Asda" class = "eu.paulcosareanu.project.website">
+        <property name = "scraper" value = "AsdaScrape"/>
+    </bean>
+    <bean id = "Tesco" class = "eu.paulcosareanu.project.website">
+        <property name = "scraper" value = "tescoScrape"/>
+    </bean>
+    <!--   <bean id = "myPerson" class = "eu.davidgamez.springdemo.Person">
+       <property name = "name" value = "Tony"/>
+       <property name = "age" value = "31"/>
+    </bean>-->
+    <!--//*[@id="main-content"]/main/div[4]/div/div[3]/select-->
+   
+</beans>
+
+
+<!-- xpathName="";
+xpathLink="";
+xpathPrice="";
+xpathImageUrl="";
+xpathPagination="";-->
+<!--
+,//semi skimmed
+,//skimmed
+,//whole
+,//organic milk
+            -->
